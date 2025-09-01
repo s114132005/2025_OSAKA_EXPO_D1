@@ -27,6 +27,19 @@ image haruka_2 = "LINE_ALBUM_620_250830_54.jpg"
 image osaka_1 = "LINE_ALBUM_620_250830_42.jpg"
 image osaka_2 = "LINE_ALBUM_620_250830_52.jpg"
 
+#藍天大樓
+#1. 從底下看藍天大樓,可以介紹一下藍天大樓的歷史 2. 準備上去藍天大樓 3. 從藍天大樓往下看的景色
+#4. 可以在室內的咖啡廳喝咖啡 5. 點一杯咖啡看窗外的景色很愜意 6.可以在這邊看風景休息 7.也可以選擇到樓上的觀景台看風景
+image Biru_1 = "LINE_ALBUM_620_250830_51.jpg"
+image Biru_2 = "LINE_ALBUM_620_250830_50.jpg"
+image Biru_3 = "LINE_ALBUM_Test_250901_2.jpg"
+image Biru_4 = "LINE_ALBUM_Test_250901_3.jpg"
+image Biru_5 = "LINE_ALBUM_620_250830_48.jpg"
+image Biru_6 = "LINE_ALBUM_620_250830_49.jpg"
+image Biru_7 = "LINE_ALBUM_620_250830_45.jpg"
+
+
+
 label start:
     jump chapter_one_start # 跳轉到你的第一章腳本
 
@@ -148,6 +161,68 @@ label continue_to_osaka:
 
     scene osaka_2 with dissolve
     "我們往梅田的方向走去,今天天氣真好,遠遠地就看到了高聳的梅田スカイビル(Umeda Sky Building),準備前往這座充滿設計感的建築。"
+    jump umeda_sky_building_story
+
+label umeda_sky_building_story:
+
+    # 1. 從底下看藍天大樓，可以介紹一下藍天大樓的歷史
+    scene Biru_1 with fade
+    "一到達梅田スカイビル（Umeda Sky Building）樓下，就立刻被這棟獨特的建築所吸引。"
+    "這座雙子塔建築，以其頂部連接的圓形空中庭園而聞名。"
+    "它不只是大阪的地標，更被英國的雜誌評選為世界前二十名的建築物之一。"
+    "抬頭仰望，那種充滿未來感的設計，讓人忍不住想要一探究竟。"
+    
+    # 2. 準備上去藍天大樓
+    scene Biru_2 with dissolve
+    "（這裡可以描述一下前往電梯的過程，或是排隊的人潮。）"
+    "我們搭乘了高速電梯，只花了幾秒鐘就上升到了高處，然後再轉乘一段手扶梯，終於抵達了空中庭園展望台。"
+
+    # 3. 從藍天大樓往下看的景色
+    scene Biru_3 with dissolve
+    "從高處俯瞰，整個大阪市區盡收眼底。"
+    "高樓大廈、車水馬龍的街道，一切都變得好小，好像一個巨大的模型。"
+    "遠處的淀川，像一條銀色的絲帶蜿蜒穿過城市，景色非常壯觀。"
+    
+    scene Biru_4 with dissolve
+    "（這裡可以描述你對這個景色的感想。）"
+    "這個高度和視角，與在地面完全不同，感覺自己好像站在雲端，看著整個城市在腳下運轉。"
+
+    # 4. 可以在室內的咖啡廳喝咖啡
+    menu:
+        "到室內的咖啡廳休息一下。":
+            jump cafe_story
+
+        "直接到戶外觀景台看風景！":
+            jump observation_deck_story
+
+label cafe_story:
+    # 5. 點一杯咖啡看窗外的景色很愜意
+    scene Biru_5 with dissolve
+    "我們選擇了在室內的咖啡廳坐下來，點了一杯熱騰騰的咖啡。"
+    "（這裡可以加上你點的咖啡或甜點的描述。）"
+    
+    scene Biru_6 with dissolve
+    "坐在舒適的沙發上，一邊品嚐著咖啡，一邊透過巨大的玻璃窗欣賞著窗外的景色。"
+    "這份寧靜和愜意，讓剛剛在戶外的喧囂都沉澱了下來，感覺格外放鬆。"
+    jump after_cafe_story
+
+label observation_deck_story:
+    # 6. 可以在這邊看風景休息
+    scene Biru_7 with dissolve
+    "我們直接走向戶外，這裡的視野更加遼闊，完全沒有玻璃的阻隔。"
+    "（這裡可以加上風吹拂的感覺，或是更貼近天空的感覺。）"
+    "迎面吹來的風，帶著城市特有的氣息，讓人感覺與這片景色融為一體。"
+    "雖然戶外有點冷，但眼前的景色值得我們在這裡多停留一會兒。"
+    
+label after_cafe_story:
+    # 7.也可以選擇到樓上的觀景台看風景
+    scene Biru_7 with dissolve
+    "（這裡可以加上從咖啡廳出來後，前往戶外觀景台的轉折語氣。）"
+    "喝完咖啡，我們也決定走到戶外的觀景台，體驗沒有玻璃阻隔的景色。"
+    "迎面吹來的風，帶著城市特有的氣息，讓人感覺與這片景色融為一體。"
+    "雖然戶外有點冷，但眼前的景色值得我們在這裡多停留一會兒。"
+
+    "（這裡可以加上你對藍天大樓這個行程的總結。）"
 
 
     return
