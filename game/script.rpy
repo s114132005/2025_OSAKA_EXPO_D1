@@ -5,7 +5,7 @@ image bg_taoyuan_airport_2 = "LINE_ALBUM_Test_250831_8.jpg"
 image bg_taoyuan_airport_3 = "LINE_ALBUM_Test_250831_11.jpg"
 image bg_taoyuan_airport_4 = "LINE_ALBUM_Test_250831_10.jpg"
 image bg_taoyuan_airport_5 = "LINE_ALBUM_Test_250831_13.jpg"
-image boarding_tw = Movie(play="movie/778312293_805608.webm")
+image boarding_tw = Movie(play="movie/778312293_805608.webm",fit=True)
 image bg_taoyuan_airport_6 = "LINE_ALBUM_Test_250831_1.jpg"
 image bg_airplane = "LINE_ALBUM_Test_250831_1.jpg"
 #飛行途中
@@ -17,7 +17,7 @@ image bg_sky = "LINE_ALBUM_Test_250831_5.jpg"
 #機場開始到藍天大廈以及飯店
 # 1. 機場沒人, 2. 脈脈 3. 機場角落一側 4.早餐漢堡 5. 漢堡店窗外景色 ˊ6. 準備搭南海電鐵去大阪,到處都是萬博脈脈的廣告 7.南海電鐵的車是Hello kitty
 # 8. 抵達大阪站,人山人海 9. 往梅田的方向走去,天氣很好,可以看到高聳的藍天大樓
-image Kansai_1 = "LINE_ALBUM_Test_250831_5.jpg"
+image Kansai_1 = "LINE_ALBUM_Test_250831_3.jpg"
 image Kansai_2 = "LINE_ALBUM_620_250830_58.jpg"
 image Kansai_3 = "LINE_ALBUM_620_250830_57.jpg"
 image hamburger_1 = "LINE_ALBUM_620_250830_56.jpg"
@@ -66,11 +66,11 @@ label chapter_one_start:
     "找到飛機了，這次搭樂桃，準備登機。"
     #場景三:找到飛機，準備登機
     scene bg_taoyuan_airport_5 with fade
-    "這次搭的是登機門前面的位置，前面沒有坐人，腳可以伸直，不過遇到緊急情況的時候要協助空姐進行疏散。"
-
+    "位置在登機門附近，前面沒有坐人，腳可以伸直，不過遇到緊急情況的時候要協助空姐進行疏散。"
+    scene black # 將背景切換成全黑
      # 顯示影片，並等待幾秒
     show boarding_tw with dissolve
-    pause(5.0)  # 讓影片播放5秒，這裡可以調整時間長度
+    pause(1.0)  # 讓影片播放5秒，這裡可以調整時間長度
 
     # 在影片播放時，顯示旁白
     "第一次看到空橋脫離飛機。"
@@ -92,7 +92,7 @@ label chapter_one_start:
     scene bg_sky with fade
     "經過幾個小時的飛行，天亮了。"
 
-
+    scene black # 將背景切換成全黑
     # 顯示第一段影片：飛機在空中飛行
     show plane_flying with dissolve
     "現在的高度可以清楚的看到海面上航行的船隻。"
@@ -101,7 +101,8 @@ label chapter_one_start:
 
     "經過了漫長的旅程，我們即將抵達目的地。"
     hide plane_flying with dissolve # 將影片淡出
-
+    
+    scene black # 將背景切換成全黑
     # 顯示第二段影片：飛機降落
     show plane_landing with dissolve
     "隨著機身緩緩下沉，地面上的建築物逐漸清晰。"
@@ -232,8 +233,9 @@ label hotel:
     scene osaka_1 with dissolve
     "逛完藍天大樓的觀景台後，準備要前往這幾天的住宿，在心齋橋附近。"
     # 顯示影片，並等待幾秒
+    scene black # 將背景切換成全黑
     show room_tour with dissolve
-    pause(5.0)  # 讓影片播放5秒，這裡可以調整時間長度
+    pause(3.0)  # 讓影片播放5秒，這裡可以調整時間長度
 
     # 在影片播放時，顯示旁白
     "帶大家來看看這幾天的住宿"
@@ -247,6 +249,85 @@ label hotel:
 
     # 當影片播放結束或劇情進入下一階段，將影片隱藏
     hide room_tour with dissolve
+    "你在入住後，準備開始探索這個城市。"
 
+    "你計畫先去哪裡呢？"
+
+    menu:
+        "在飯店休息":
+            jump rest_at_hotel
+
+        "心齋橋逛街":
+            jump shopping_at_shinsaibashi
+
+        "阿倍野觀景台":
+            jump visit_abenoharukas
+
+        "新世界":
+            jump explore_shinsekai
+
+label rest_at_hotel:
+    "你決定在舒適的飯店房間裡放鬆一下，為接下來的行程儲備體力。"
+    "（這是關於在飯店休息的故事...）"
+    jump to_dinner_story
+
+label shopping_at_shinsaibashi:
+    "你興奮地前往熱鬧的心齋橋，準備大肆採購一番。"
+    "（這是關於心齋橋逛街的故事...）"
+    jump to_dinner_story
+
+label visit_abenoharukas:
+    "你搭車前往阿倍野，從高處欣賞大阪的日落美景。"
+    "（這是關於阿倍野觀景台的故事...）"
+    jump to_dinner_story
+
+label explore_shinsekai:
+    "你來到充滿復古氛圍的新世界，感受歷史與美食的交織。"
+    "（這是關於新世界的故事...）"
+    jump to_dinner_story
+
+label to_dinner_story:
+    scene bg dinner_place
+    "結束了一天的行程，你的肚子發出了抗議聲。"
+    "你決定去附近的一家餐廳，好好犒賞自己一番。"
+    "（在這裡，你可以接續晚餐的劇情...）"
+    menu:
+        "直接回飯店休息":
+            jump go_back_to_hotel
+        
+        "去道頓堀逛逛":
+            jump explore_dotonbori
+        
+        # 晚餐後的新選項，讓玩家決定是否結束一天的行程
+        "今天就到這裡，準備迎接明天":
+            jump day_two_osaka_castle
+
+label go_back_to_hotel:
+    "酒足飯飽後，你回到飯店，洗完澡後直接倒頭就睡。"
+    "（這是關於回飯店睡覺的故事...）"
+    jump day_three_expo # 晚餐後，選擇回飯店就直接跳到第三天
+
+label explore_dotonbori:
+    "夜幕低垂，你來到燈火通明的道頓堀，準備感受大阪的夜生活。"
+    "（這是關於道頓堀逛街的故事...）"
+    jump day_three_expo # 晚餐後，選擇逛街也直接跳到第三天
+
+# 新增第二天故事的起始點
+label day_two_osaka_castle:
+    scene bg osaka_castle # 請自行替換為大阪城的背景圖
+    "隔天早上，你精神飽滿地醒來，決定前往宏偉的大阪城。"
+    "（這是關於大阪城的故事...）"
+    "逛完大阪城後，你再次感到飢餓。"
+    # 故事結束後，自動跳轉回晚餐標籤
+    jump to_dinner_story
+
+# 新增第三天故事的起始點
+label day_three_expo:
+    scene bg 万博記念公園 # 請自行替換為萬博的背景圖
+    "第三天，你來到萬博紀念公園，準備探索這個充滿歷史意義的地方。"
+    "（這是關於萬博的故事...）"
+    "結束了萬博的行程，你覺得肚子有點餓了。"
+    # 自動跳轉回晚餐標籤
+    jump to_dinner_story
 
     return
