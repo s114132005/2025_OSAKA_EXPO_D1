@@ -38,6 +38,10 @@ image Biru_5 = "LINE_ALBUM_620_250830_48.jpg"
 image Biru_6 = "LINE_ALBUM_620_250830_49.jpg"
 image Biru_7 = "LINE_ALBUM_620_250830_45.jpg"
 
+#前往住宿+午餐+難波逛街+阿輩野
+# 1.接下來回到大阪車站, 準備去這幾天住宿的地方 2. room tour
+image hotel_1 = "LINE_ALBUM_620_250830_45.jpg"
+image room_tour = Movie(play="movie/Video_566332449110622576_Qrblfkrw.webm")
 
 
 label start:
@@ -223,6 +227,26 @@ label after_cafe_story:
     "雖然戶外有點冷，但眼前的景色值得我們在這裡多停留一會兒。"
 
     "（這裡可以加上你對藍天大樓這個行程的總結。）"
+
+label hotel:
+    scene osaka_1 with dissolve
+    "逛完藍天大樓的觀景台後，準備要前往這幾天的住宿，在心齋橋附近。"
+    # 顯示影片，並等待幾秒
+    show room_tour with dissolve
+    pause(5.0)  # 讓影片播放5秒，這裡可以調整時間長度
+
+    # 在影片播放時，顯示旁白
+    "帶大家來看看這幾天的住宿"
+
+    # 等待玩家點擊，繼續播放影片
+    # 如果你希望影片能繼續播放直到結束，可以使用一個較長的暫停時間，或者監聽影片結束的事件。
+    # 最簡單的方法是使用 pause 來讓玩家控制節奏。
+    pause
+
+    "房間看起來很寬敞，缺點是窗戶看不到外面。"
+
+    # 當影片播放結束或劇情進入下一階段，將影片隱藏
+    hide room_tour with dissolve
 
 
     return
