@@ -84,6 +84,26 @@ image bg_dinner_okonomiyaki_1 = "LINE_ALBUM_202592_250903_2.jpg"
 #燒烤
 image bg_dinner_yakiniku_1 = "LINE_ALBUM_620_250830_16.jpg"
 
+#心齋橋逛街
+image bg_dinner_shinsaibashi_1 = "LINE_ALBUM_620_250830_41.jpg"
+image bg_dinner_shinsaibashi_2 = "LINE_ALBUM_620_250830_37.jpg"
+image bg_dinner_shinsaibashi_3 = "LINE_ALBUM_620_250830_35.jpg"
+image bg_dinner_shinsaibashi_4 = "LINE_ALBUM_620_250830_31.jpg"
+image bg_dinner_shinsaibashi_5 = "LINE_ALBUM_620_250830_33.jpg"
+image bg_dinner_shinsaibashi_6 = "LINE_ALBUM_202592_250903_23.jpg"
+image bg_dinner_shinsaibashi_7 = "LINE_ALBUM_202592_250903_15.jpg"
+image bg_dinner_shinsaibashi_8 = "LINE_ALBUM_202592_250903_24.jpg"
+
+#阿倍野
+image bg_dinner_abenoharukas_1 = "LINE_ALBUM_202592_250903_25.jpg"
+image bg_dinner_abenoharukas_2 = "LINE_ALBUM_620_250830_29.jpg"
+image bg_dinner_abenoharukas_3 = "LINE_ALBUM_620_250830_1.jpg"
+image bg_dinner_abenoharukas_4 = "LINE_ALBUM_620_250830_27.jpg"
+image bg_dinner_abenoharukas_5 = "LINE_ALBUM_620_250830_24.jpg"
+image bg_dinner_abenoharukas_7 = "LINE_ALBUM_620_250830_25.jpg"
+#新世界 通天閣
+image bg_dinner_shinsekai_1 = "LINE_ALBUM_621_250903_8.jpg"
+
 
 # 用來追蹤蒐集到的章數量
 default stamps_collected = 0
@@ -288,28 +308,78 @@ label hotel:
         "阿倍野觀景台":
             jump visit_abenoharukas
 
-        "新世界":
+        "通天閣":
             jump explore_shinsekai
 
 label rest_at_hotel:
     scene bg_hotel with dissolve
     "你決定在舒適的旅館房間裡放鬆一下，為接下來的行程儲備體力。"
+    "休息完後，是時候出去覓食了。"
     jump to_dinner_story
 
 label shopping_at_shinsaibashi:
-    "你興奮地前往熱鬧的心齋橋，準備大肆採購一番。"
-    "（這是關於心齋橋逛街的故事...）"
+    scene bg_dinner_shinsaibashi_1 with dissolve
+    "白天的心齋橋，天氣很好，平靜的河面上沒有小船在滑行。"
+    scene bg_dinner_shinsaibashi_2 with dissolve
+    "這是道頓堀這邊有名的地標，固力果。"
+    scene bg_dinner_shinsaibashi_3 with dissolve
+    "跟固力果合照一張"
+    scene bg_dinner_shinsaibashi_4 with dissolve
+    "到藏在巷弄裡的法善寺走走。"
+    scene bg_dinner_shinsaibashi_5 with dissolve
+    "裡面有一尊被苔癬覆蓋的不動明王，看起來非常的神秘。"
+    scene bg_dinner_shinsaibashi_6 with dissolve
+    "大馬路旁邊還有寺廟蓋在飯店的一樓。"
+    scene bg_dinner_shinsaibashi_7 with dissolve
+    "到難波站附近逛街。"
+    scene bg_dinner_shinsaibashi_8 with dissolve
+    "順便買Mont bell。"
+    scene bg_dinner_shinsaibashi_1 with dissolve
+    "逛街逛得好累，是時候可以去吃晚餐了。"
     jump to_dinner_story
 
 label visit_abenoharukas:
-    "你搭車前往阿倍野，從高處欣賞大阪的日落美景。"
-    "（這是關於阿倍野觀景台的故事...）"
+    scene bg_dinner_abenoharukas_1 with fade
+    "來到大阪地標阿倍野300。"
+    scene bg_dinner_abenoharukas_2 with fade
+    "準備上去觀景台看夜景。"
+    scene bg_dinner_abenoharukas_6 with fade
+    "你搭乘電梯直達阿倍野觀景台，當電梯門打開時，整個大阪市景在你眼前展開。"
+    "腳下的城市燈火輝煌，就像一條流動的銀河。"
+    "不同的樓層中，有人正在畫架前專心欣賞眼前的景色，有人在吧檯旁輕聲交談。"
+    "寬敞的空間充滿了悠閒而舒適的氛圍，讓人感到無比放鬆。"
+    scene bg_dinner_abenoharukas_3 with fade
+    "上面剛好有哥吉拉的展覽。"
+    scene bg_dinner_abenoharukas_4 with fade
+    "雖然沒有晴空塔高，不過大阪的夜景也是很迷人。"
+    scene bg_dinner_abenoharukas_5 with fade
+    "遠處可以看到位在新世界的通天閣，從高處往下看就像根彩色的蠟燭。"
+    scene bg_dinner_abenoharukas_7 with fade
+    "看完夜景，肚子有點餓了，可以準備去吃晚餐。"
     jump to_dinner_story
 
 label explore_shinsekai:
-    "你來到充滿復古氛圍的新世界，感受歷史與美食的交織。"
-    "（這是關於新世界的故事...）"
-    jump to_dinner_story
+    scene bg_dinner_shinsekai_1 with fade
+    "來到位於新世界的通天閣看夜景，通天閣上面還有個很長的溜滑梯可以直接溜下來。"
+    "因為時間有點晚了，溜滑梯跟上觀景台只能選一個，你想玩哪個呢?"
+    menu:
+        "上觀景台看夜景":
+            "你搭上電梯，準備從高處俯瞰整個新世界，享受360度的城市風光。"
+            jump shinsekai_observation_deck
+        "玩溜滑梯":
+            "你鼓起勇氣，決定挑戰通天閣的溜滑梯，感受從高空一溜而下的刺激！"
+            jump shinsekai_slide
+
+            
+label shinsekai_observation_deck:
+"從觀景台望出去，整個新世界和周圍的街區盡收眼底。"
+"（這裡可以加入更多觀景台的描寫...）"
+jump to_dinner_story
+
+label shinsekai_slide:
+"你坐上溜滑梯的滑墊，從高處疾速滑下，風在耳邊呼嘯而過。"
+"（這裡可以加入溜滑梯的刺激體驗描寫...）"
+jump to_dinner_story
 
 label to_dinner_story:
     scene bg_dinner_menu with dissolve
@@ -410,14 +480,49 @@ label go_back_to_hotel_and_end_day:
     "你回到飯店，洗完澡後直接倒頭就睡。"
     "（這是關於回飯店睡覺的故事...）"
     "（你準備迎接全新的一天...）"
-    jump day_two_osaka_castle
+
+    scene bg_hotel with dissolve
+    "（第二天早上...）"
+
+    if osaka_castle_visited:
+        "你已經去過大阪城了，今天你決定去新的地方。"
+        
+        menu:
+            "在飯店休息":
+                jump rest_at_hotel
+            "心齋橋逛街":
+                jump shopping_at_shinsaibashi
+            "阿倍野觀景台":
+                jump visit_abenoharukas
+            "新世界":
+                jump explore_shinsekai
+            "大阪城":
+                jump day_two_osaka_castle
+            "大阪萬博":
+                "今天是去萬博的好日子！"
+                jump day_three_expo
+    else:
+        "今天你決定先前往大阪的著名地標，大阪城。"
+        
+        menu:
+            "在飯店休息":
+                jump rest_at_hotel
+            "心齋橋逛街":
+                jump shopping_at_shinsaibashi
+            "阿倍野觀景台":
+                jump visit_abenoharukas
+            "新世界":
+                jump explore_shinsekai
+            "大阪城":
+                "今天就去探訪這座歷史名城吧！"
+                jump day_two_osaka_castle
 
 label explore_dotonbori_and_end_day:
     scene bg_dotonbori with fade
     "夜幕低垂，你來到燈火通明的道頓堀，準備感受大阪的夜生活。"
     "（這是關於道頓堀逛街的故事...）"
     "（你準備迎接全新的一天...）"
-    jump day_two_osaka_castle
+    jump go_back_to_hotel_and_end_day
 
 # 第二天的故事
 label day_two_osaka_castle:
@@ -426,6 +531,7 @@ label day_two_osaka_castle:
     "（這是關於大阪城的故事...）"
     "逛完大阪城後，你再次感到飢餓。"
     # 故事結束後，自動跳轉回晚餐標籤
+    $ osaka_castle_visited = True
     jump to_dinner_story
 
 # 第三天的故事 - 萬博世博會
