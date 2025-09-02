@@ -4,12 +4,12 @@ image bg_taoyuan_airport_2 = "LINE_ALBUM_Test_250831_8.jpg"
 image bg_taoyuan_airport_3 = "LINE_ALBUM_Test_250831_11.jpg"
 image bg_taoyuan_airport_4 = "LINE_ALBUM_Test_250831_10.jpg"
 image bg_taoyuan_airport_5 = "LINE_ALBUM_Test_250831_13.jpg"
-image boarding_tw = Movie(play="movie/778312293_805608.webm",fit=True)
+image boarding_tw = Movie(play="movie/778312293_805608.webm",fit=True,loop=False)
 image bg_taoyuan_airport_6 = "LINE_ALBUM_Test_250831_1.jpg"
 image bg_airplane = "LINE_ALBUM_Test_250831_1.jpg"
 #飛行途中
-image plane_flying = Movie(play="movie/Img_4532.webm")
-image plane_landing = Movie(play="movie/Img_4533.webm")
+image plane_flying = Movie(play="movie/Img_4532.webm",loop=False)
+image plane_landing = Movie(play="movie/Img_4533.webm",loop=False)
 
 image bg_sky = "LINE_ALBUM_Test_250831_5.jpg"
 
@@ -40,7 +40,7 @@ image Biru_7 = "LINE_ALBUM_620_250830_45.jpg"
 #前往住宿+午餐+難波逛街+阿輩野
 # 1.接下來回到大阪車站, 準備去這幾天住宿的地方 2. room tour
 image hotel_1 = "LINE_ALBUM_620_250830_45.jpg"
-image room_tour = Movie(play="movie/Video_566332449110622576_Qrblfkrw.webm")
+image room_tour = Movie(play="movie/Video_566332449110622576_Qrblfkrw.webm",loop=False)
 # 晚餐
 image dinner_place = "LINE_ALBUM_Test_250831_1.jpg"
 # 結局
@@ -66,6 +66,7 @@ label start:
     jump chapter_one_start # 跳轉到你的第一章腳本
 
 label chapter_one_start:
+    play music "With_You_Everet_Almond.mp3" loop
     # 場景一：機捷
     scene bg_taoyuan_airport_1 with fade
     "（機場捷運的廣播聲）"
@@ -86,17 +87,9 @@ label chapter_one_start:
     scene black # 將背景切換成全黑
     # 顯示影片，並等待幾秒
     show boarding_tw with dissolve
-    pause(1.0)  # 讓影片播放5秒，這裡可以調整時間長度
-
     # 在影片播放時，顯示旁白
     "第一次看到空橋脫離飛機。"
-
-    # 等待玩家點擊，繼續播放影片
-    # 如果你希望影片能繼續播放直到結束，可以使用一個較長的暫停時間，或者監聽影片結束的事件。
-    # 最簡單的方法是使用 pause 來讓玩家控制節奏。
-    pause
-
-    "這真是個奇景。"
+   # pause  # 讓影片播放5秒，這裡可以調整時間長度
 
     # 當影片播放結束或劇情進入下一階段，將影片隱藏
     hide boarding_tw with dissolve
@@ -111,38 +104,29 @@ label chapter_one_start:
     scene black # 將背景切換成全黑
     # 顯示第一段影片：飛機在空中飛行
     show plane_flying with dissolve
-    "現在的高度可以清楚的看到海面上航行的船隻。"
+    "現在的高度可以清楚的看到海面上航行的船隻，經過了漫長的旅程，我們即將抵達目的地。"
+    #pause
 
-    pause # 暫停，讓影片播放，等待玩家點擊繼續
-
-    "經過了漫長的旅程，我們即將抵達目的地。"
     hide plane_flying with dissolve # 將影片淡出
     
     scene black # 將背景切換成全黑
     # 顯示第二段影片：飛機降落
     show plane_landing with dissolve
     "隨著機身緩緩下沉，地面上的建築物逐漸清晰。"
-    
-    pause # 再次暫停，讓降落影片播放，等待玩家點擊
-
-    "機輪輕輕地碰觸到跑道，一陣微小的震動宣告了旅程的結束。"
+    "機輪輕輕地碰觸到跑道，一陣微小的震動後，平安的降落了。"
     hide plane_landing with dissolve # 將影片淡出
 
 # --- 機場沒人、脈脈、角落一側 ---
     scene Kansai_1 with fade
-    "第一次踏上関西国際空港的土地，機場內人煙稀少，顯得格外寬敞寧靜。"
+    "第一次踏上關西機場的土地，機場內人煙稀少，顯得格外寬敞寧靜。"
 
     scene Kansai_2 with dissolve
     "到處都看到了2025年大阪萬博的吉祥物脈脈(ミャクミャク)的廣告，感覺萬博的氛圍已經提前瀰漫開來了。"
 
     scene Kansai_3 with dissolve
-    "在機場的角落，一個不起眼卻充滿故事感的地方，也拍下了這張照片。"
-    
-    scene Kansai_3 with dissolve
-    "在機場的角落，一個不起眼卻充滿故事感的地方，也拍下了這張照片。"
+    "安靜的機場角落，陽光溫柔地從圓形穹頂灑落，窗外是藍天與寬廣的停機坪，靜靜等待旅人的到來。"
     
     # --- 漢堡店選項 ---
-    scene hamburger_1 with dissolve
     "肚子傳來一陣咕嚕聲..."
     "雖然剛下飛機，但感覺有點餓了，要不要先找個地方吃點東西再出發？"
     menu:
@@ -169,14 +153,13 @@ label skip_hamburger_story:
 label continue_to_osaka:
     # --- 前往大阪市區 ---
     scene haruka_1 with fade
-    "準備搭乘南海電鐵前往大阪，車站裡滿是萬博脈脈的宣傳廣告，提醒著我們大阪的熱情與活力。"
+    "準備搭乘南海電鐵前往大阪，車站裡滿是萬博脈脈的宣傳廣告，彷彿整個大阪都是萬博的展場。"
 
     scene haruka_2 with dissolve
     "更令人驚喜的是,我們搭上的是Hello Kitty主題列車!車廂內充滿了可愛的Hello Kitty元素,讓整個車程都變得超級夢幻。"
 
     scene osaka_1 with fade
-    "抵達大阪車站，果然是人山人海，瞬間感受到大都市的喧囂與活力。"
-    "（這裡可以加上你對大阪車站人潮的感想。）"
+    "抵達大阪車站，果然是人山人海，瞬間感受到這座關西大城的喧囂與活力。"
 
     scene osaka_2 with dissolve
     "我們往梅田的方向走去,今天天氣真好,遠遠地就看到了高聳的梅田スカイビル(Umeda Sky Building),準備前往這座充滿設計感的建築。"
