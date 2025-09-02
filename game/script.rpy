@@ -54,6 +54,37 @@ image bg_osaka_castle = "LINE_ALBUM_Test_250831_1.jpg"
 image bg_shinsekai = "LINE_ALBUM_Test_250831_1.jpg"
 image bg_dotonbori = "LINE_ALBUM_Test_250831_1.jpg"
 
+#hotel
+image bg_hotel = "hotel.jpg"
+
+#dinner
+image bg_dinner_menu = "LINE_ALBUM_620_250830_6.jpg"
+# sashimi
+image bg_sashimi_1 = "LINE_ALBUM_202592_250903_12.jpg"
+image bg_sashimi_11 = "LINE_ALBUM_202592_250903_18.jpg"
+image bg_sashimi_2 = "LINE_ALBUM_202592_250903_16.jpg"
+image bg_sashimi_3 = "LINE_ALBUM_202592_250903_14.jpg"
+image bg_sashimi_4 = "LINE_ALBUM_621_250903_7.jpg"
+image bg_sashimi_5 = "LINE_ALBUM_202592_250903_14.jpg"
+image bg_sashimi_6 = "LINE_ALBUM_202592_250903_13.jpg"
+image bg_sashimi_7 = "LINE_ALBUM_202592_250903_17.jpg"
+
+#sukiyaki
+image bg_sukiyaki_1 = "LINE_ALBUM_202592_250903_11.jpg"
+
+#豬排
+
+#shake_shack
+image bg_shake_1 = "LINE_ALBUM_202592_250903_1.jpg"
+image bg_shake_2 = "LINE_ALBUM_202592_250903_2.jpg"
+
+#大阪燒
+image bg_dinner_okonomiyaki_1 = "LINE_ALBUM_202592_250903_2.jpg"
+
+#燒烤
+image bg_dinner_yakiniku_1 = "LINE_ALBUM_620_250830_16.jpg"
+
+
 # 用來追蹤蒐集到的章數量
 default stamps_collected = 0
 
@@ -235,15 +266,9 @@ label hotel:
     # 顯示影片，並等待幾秒
     scene black # 將背景切換成全黑
     show room_tour with dissolve
-    pause(3.0)  # 讓影片播放5秒，這裡可以調整時間長度
 
     # 在影片播放時，顯示旁白
     "帶大家來看看這幾天的住宿"
-
-    # 等待玩家點擊，繼續播放影片
-    # 如果你希望影片能繼續播放直到結束，可以使用一個較長的暫停時間，或者監聽影片結束的事件。
-    # 最簡單的方法是使用 pause 來讓玩家控制節奏。
-    pause
 
     "房間看起來很寬敞，缺點是窗戶看不到外面。"
 
@@ -267,8 +292,8 @@ label hotel:
             jump explore_shinsekai
 
 label rest_at_hotel:
-    "你決定在舒適的飯店房間裡放鬆一下，為接下來的行程儲備體力。"
-    "（這是關於在飯店休息的故事...）"
+    scene bg_hotel with dissolve
+    "你決定在舒適的旅館房間裡放鬆一下，為接下來的行程儲備體力。"
     jump to_dinner_story
 
 label shopping_at_shinsaibashi:
@@ -287,19 +312,102 @@ label explore_shinsekai:
     jump to_dinner_story
 
 label to_dinner_story:
-    scene dinner_place with fade
+    scene bg_dinner_menu with dissolve
     "結束了一天的行程，你的肚子發出了抗議聲。"
     "你決定去附近的一家餐廳，好好犒賞自己一番。"
-    "（在這裡，你可以接續晚餐的劇情...）"
     menu:
+        "吃晚餐":
+            "你掃視著菜單，猶豫著該吃什麼..."
+            menu:
+                "生魚片":
+                    jump dinner_sashimi
+                "壽喜燒":
+                    jump dinner_sukiyaki
+                "豬排飯":
+                    jump dinner_tonkatsu
+                "燒烤":
+                    jump dinner_yakiniku
+                "大阪燒":
+                    jump dinner_okonomiyaki
+                "Shake Shack 漢堡":
+                    jump dinner_shake_shack
+
         "直接回飯店休息":
             jump go_back_to_hotel_and_end_day
         
         "去道頓堀逛逛":
             jump explore_dotonbori_and_end_day
-        
+
+label dinner_sashimi:
+    # 場景 1：進入餐廳
+    scene bg_sashimi_1 with dissolve
+    "這家在車站地下街，看起來不起眼的小店，店內傳來陣陣香氣與店員忙碌的聲音。"
+
+    scene bg_sashimi_11 with dissolve
+    "我們抵達的時候外面已大排長龍。"
+
+    # 場景 3：看菜單
+    scene bg_sashimi_3 with dissolve
+    "看著菜單上琳瑯滿目的選擇，每一種魚都如此誘人。"
+
+    # 場景 4：點餐
+    scene bg_sashimi_4 with dissolve
+    "你向服務生說出你的選擇，心中滿是期待。"
+
+    # 場景 5：等待
+    scene bg_sashimi_5 with dissolve
+    "等待的時刻總是漫長，你迫不及待地想品嚐新鮮的生魚片。"
+
+    # 場景 7：上菜
+    scene bg_sashimi_6 with dissolve
+    "一道精美的生魚片拼盤被端了上來，宛如一幅藝術品。"
+
+    # 場景 8：第一口
+    scene bg_sashimi_7 with dissolve
+    "你夾起第一片，那入口即化的口感，讓你彷彿置身於大海之中。"
+
+    jump continue_after_dinner
+
+label dinner_sukiyaki:
+    scene bg_sukiyaki_1 with dissolve
+    "你選擇了壽喜燒，在溫暖的鍋物中享受著美味的牛肉和蔬菜。"
+    "（壽喜燒劇情...)"
+    jump continue_after_dinner
+
+label dinner_tonkatsu:
+    scene bg_pork_1 with dissolve
+    "酥脆的炸豬排飯，讓你感到滿足。"
+    "（豬排飯劇情...)"
+    jump continue_after_dinner
+
+label dinner_yakiniku:
+    scene bg_dinner_yakiniku_1 with dissolve
+    "看起來是附近有名的燒烤店。"
+    jump continue_after_dinner
+
+label dinner_okonomiyaki:
+    scene bg_dinner_okonomiyaki_1 with dissolve
+    "大阪燒藏在一個不起眼的小巷子裡。"
+    "（大阪燒劇情...)"
+    jump continue_after_dinner
+
+label dinner_shake_shack:
+    scene bg_shake_1 with fade
+    "難道是要吃這個超級大漢堡嗎?"
+    scene bg_shake_2 with fade
+    "當然不是"
+    jump continue_after_dinner
+
+label continue_after_dinner:
+"（晚餐結束後，你可以選擇繼續劇情或回飯店休息...)"
+jump go_back_to_hotel_and_end_day # 暫時跳回飯店休息，你可以根據需要修改
+
+return
+
+
 label go_back_to_hotel_and_end_day:
-    "酒足飯飽後，你回到飯店，洗完澡後直接倒頭就睡。"
+    scene bg_hotel with dissolve
+    "你回到飯店，洗完澡後直接倒頭就睡。"
     "（這是關於回飯店睡覺的故事...）"
     "（你準備迎接全新的一天...）"
     jump day_two_osaka_castle
