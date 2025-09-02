@@ -344,7 +344,7 @@ screen main_menu():
     ## 這可確保替換任何其他選單畫面。
     tag menu
 
-    add gui.main_menu_background
+    add "gui/LINE_ALBUM_622_250903_6.png"
 
     ## 這個空框使主選單變暗。
     frame:

@@ -50,9 +50,7 @@ image bg_expo_main_hall = "LINE_ALBUM_Test_250831_1.jpg"
 image japan_pavilion = "LINE_ALBUM_Test_250831_1.jpg"
 image usa_pavilion = "LINE_ALBUM_Test_250831_1.jpg"
 # 額外
-image bg_osaka_castle = "LINE_ALBUM_Test_250831_1.jpg"
-image bg_shinsekai = "LINE_ALBUM_Test_250831_1.jpg"
-image bg_dotonbori = "LINE_ALBUM_Test_250831_1.jpg"
+image bg_osaka_castle_1 = "LINE_ALBUM_621_250903_15.jpg"
 
 #hotel
 image bg_hotel = "hotel.jpg"
@@ -103,7 +101,11 @@ image bg_dinner_abenoharukas_5 = "LINE_ALBUM_620_250830_24.jpg"
 image bg_dinner_abenoharukas_7 = "LINE_ALBUM_620_250830_25.jpg"
 #新世界 通天閣
 image bg_dinner_shinsekai_1 = "LINE_ALBUM_621_250903_8.jpg"
-
+image bg_dinner_shinsekai_2 = "LINE_ALBUM_202592_250903_29.jpg"
+image bg_dinner_shinsekai_3 = "LINE_ALBUM_202592_250903_28.jpg"
+image bg_dinner_shinsekai_4 = "LINE_ALBUM_621_250903_13.jpg"
+image bg_dinner_shinsekai_5 = "LINE_ALBUM_621_250903_12.jpg"
+image bg_dinner_shinsekai_6 = "LINE_ALBUM_202592_250903_30.jpg"
 
 # 用來追蹤蒐集到的章數量
 default stamps_collected = 0
@@ -227,7 +229,7 @@ label umeda_sky_building_story:
     
     # 2. 準備上去藍天大樓
     scene Biru_2 with dissolve
-    "（這裡可以描述一下前往電梯的過程，或是排隊的人潮。）"
+    "準備搭電提前往空中庭園。"
     "我們搭乘了高速電梯，只花了幾秒鐘就上升到了高處，然後再轉乘一段手扶梯，終於抵達了空中庭園展望台。"
 
     # 3. 從藍天大樓往下看的景色
@@ -370,16 +372,24 @@ label explore_shinsekai:
             "你鼓起勇氣，決定挑戰通天閣的溜滑梯，感受從高空一溜而下的刺激！"
             jump shinsekai_slide
 
-            
+
 label shinsekai_observation_deck:
-"從觀景台望出去，整個新世界和周圍的街區盡收眼底。"
-"（這裡可以加入更多觀景台的描寫...）"
-jump to_dinner_story
+    scene bg_dinner_shinsekai_2 with fade
+    "從觀景台望出去，整個新世界和周圍的街區盡收眼底，還可以看到遠方的阿倍野300。"
+    scene bg_dinner_shinsekai_3 with fade
+    "遠方還可以看到道頓堀的唐吉軻德摩天輪。"
+    scene bg_dinner_shinsekai_4 with fade
+    "通天閣晚上點起了燈，看起來非常的華麗與熱鬧。"
+    scene bg_dinner_shinsekai_5 with fade
+    "新世界復古的風格，讓人彷彿穿越到了昭和時代的夜市。"
+    "逛著逛著就餓了，是不是該去找晚餐吃了?"
+    jump to_dinner_story
 
 label shinsekai_slide:
-"你坐上溜滑梯的滑墊，從高處疾速滑下，風在耳邊呼嘯而過。"
-"（這裡可以加入溜滑梯的刺激體驗描寫...）"
-jump to_dinner_story
+    scene bg_dinner_shinsekai_6 with fade
+    "你坐上溜滑梯的滑墊，從高處疾速滑下，風在耳邊呼嘯而過。"
+    "（這裡可以加入溜滑梯的刺激體驗描寫...）"
+    jump to_dinner_story
 
 label to_dinner_story:
     scene bg_dinner_menu with dissolve
@@ -494,7 +504,7 @@ label go_back_to_hotel_and_end_day:
                 jump shopping_at_shinsaibashi
             "阿倍野觀景台":
                 jump visit_abenoharukas
-            "新世界":
+            "通天閣":
                 jump explore_shinsekai
             "大阪城":
                 jump day_two_osaka_castle
@@ -526,13 +536,22 @@ label explore_dotonbori_and_end_day:
 
 # 第二天的故事
 label day_two_osaka_castle:
-    scene bg_osaka_castle with fade
-    "隔天早上，你精神飽滿地醒來，決定前往宏偉的大阪城。"
-    "（這是關於大阪城的故事...）"
-    "逛完大阪城後，你再次感到飢餓。"
+    scene bg_osaka_castle_1 with fade
+    "隔天早上，你精神飽滿地醒來，決定前往日本三大名城之一的大阪城，雖然離城堡還有一段距離，仍能感受到它的宏偉。"
     # 故事結束後，自動跳轉回晚餐標籤
     $ osaka_castle_visited = True
-    jump to_dinner_story
+    scene bg_osaka_castle_1 with fade
+    "逛完大阪城時間還早，想去哪裡走走嗎?"
+    menu:
+        "在飯店休息":
+            jump rest_at_hotel
+        "心齋橋逛街":
+            jump shopping_at_shinsaibashi
+        "阿倍野觀景台":
+            jump visit_abenoharukas
+        "新世界":
+            jump explore_shinsekai
+
 
 # 第三天的故事 - 萬博世博會
 label day_three_expo:
