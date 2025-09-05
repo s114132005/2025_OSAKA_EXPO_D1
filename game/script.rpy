@@ -49,8 +49,9 @@ image end_scene = "LINE_ALBUM_Test_250831_1.jpg"
 image bg_expo_main_hall = "LINE_ALBUM_Test_250831_1.jpg"
 image japan_pavilion = "LINE_ALBUM_Test_250831_1.jpg"
 image usa_pavilion = "LINE_ALBUM_Test_250831_1.jpg"
-# 額外
+# 大阪城
 image bg_osaka_castle_1 = "LINE_ALBUM_621_250903_15.jpg"
+default osaka_castle_visited = False
 
 #hotel
 image bg_hotel = "hotel.jpg"
@@ -191,7 +192,7 @@ label chapter_one_start:
 
 label eat_hamburger_story:
     scene hamburger_1 with dissolve
-    "我們找了間漢堡店，點了份熱騰騰的早餐。在異國的第一餐，感覺格外美味。"
+    "我們找了間漢堡店，點了份漢堡飲料。在異國的第一餐，感覺格外美味。"
     
     scene hamburger_view with dissolve
     "坐在靠窗的位置，一邊吃著漢堡，一邊欣賞著窗外的機場景色。"
@@ -229,37 +230,38 @@ label umeda_sky_building_story:
     
     # 2. 準備上去藍天大樓
     scene Biru_2 with dissolve
-    "準備搭電提前往空中庭園。"
+    "準備搭電梯前往空中庭園。"
     "我們搭乘了高速電梯，只花了幾秒鐘就上升到了高處，然後再轉乘一段手扶梯，終於抵達了空中庭園展望台。"
 
     # 3. 從藍天大樓往下看的景色
     scene Biru_3 with dissolve
-    "從高處俯瞰，整個大阪市區盡收眼底。"
-    "高樓大廈、車水馬龍的街道，一切都變得好小，好像一個巨大的模型。"
-    "遠處的淀川，像一條銀色的絲帶蜿蜒穿過城市，景色非常壯觀。"
-    
-    scene Biru_4 with dissolve
-    "（這裡可以描述你對這個景色的感想。）"
-    "這個高度和視角，與在地面完全不同，感覺自己好像站在雲端，看著整個城市在腳下運轉。"
+    "從高處俯瞰，周圍的建築物與街道彷彿變成了積木一般的玩具，玻璃帷幕反射的陽光與底下的綠意相互輝映。"
 
     # 4. 可以在室內的咖啡廳喝咖啡
     menu:
         "到室內的咖啡廳休息一下。":
             jump cafe_story
 
-        "直接到戶外觀景台看風景！":
+        "到戶外觀景台看風景！":
             jump observation_deck_story
 
 label cafe_story:
     # 5. 點一杯咖啡看窗外的景色很愜意
     scene Biru_5 with dissolve
-    "我們選擇了在室內的咖啡廳坐下來，點了一杯熱騰騰的咖啡。"
-    "（這裡可以加上你點的咖啡或甜點的描述。）"
+    "我們選擇了在室內的咖啡廳坐下來，點了一杯冰美式咖啡。"
+    "遠處的淀川像條銀色的絲帶穿過城市，景色非常的美麗。"
     
     scene Biru_6 with dissolve
-    "坐在舒適的沙發上，一邊品嚐著咖啡，一邊透過巨大的玻璃窗欣賞著窗外的景色。"
-    "這份寧靜和愜意，讓剛剛在戶外的喧囂都沉澱了下來，感覺格外放鬆。"
-    jump after_cafe_story
+    "坐在舒適的沙發上，一邊品嚐著咖啡，一邊透過巨大的玻璃窗欣賞著窗外的景色，遠處的淀川像條銀色的絲帶穿過城市。"
+    "這份寧靜和愜意，讓剛剛在戶外的喧囂都沉澱了下來，紅眼班機的疲勞感一掃而空。"
+    "接下來要怎麼安排呢？"
+    menu:
+        "回飯店休息":
+            jump hotel
+        "到戶外區走走":
+            jump observation_deck_story
+
+
 
 label observation_deck_story:
     # 6. 可以在這邊看風景休息
@@ -268,19 +270,13 @@ label observation_deck_story:
     "（這裡可以加上風吹拂的感覺，或是更貼近天空的感覺。）"
     "迎面吹來的風，帶著城市特有的氣息，讓人感覺與這片景色融為一體。"
     "雖然戶外有點冷，但眼前的景色值得我們在這裡多停留一會兒。"
-    
-    jump after_cafe_story
+    "接下來要怎麼安排呢？"
+    menu:
+        "要去喝杯咖啡嗎？":
+            jump cafe_story
+        "還是回飯店休息":
+            jump hotel    
 
-label after_cafe_story:
-    # 7.也可以選擇到樓上的觀景台看風景
-    scene Biru_7 with dissolve
-    "（這裡可以加上從咖啡廳出來後，前往戶外觀景台的轉折語氣。）"
-    "喝完咖啡，我們也決定走到戶外的觀景台，體驗沒有玻璃阻隔的景色。"
-    "迎面吹來的風，帶著城市特有的氣息，讓人感覺與這片景色融為一體。"
-    "雖然戶外有點冷，但眼前的景色值得我們在這裡多停留一會兒。"
-
-    "（這裡可以加上你對藍天大樓這個行程的總結。）"
-    jump hotel
 
 label hotel:
     scene osaka_1 with dissolve
@@ -296,8 +292,8 @@ label hotel:
 
     # 當影片播放結束或劇情進入下一階段，將影片隱藏
     hide room_tour with dissolve
-    "你在入住後，準備開始探索這個城市。"
-
+    scene hotel with dissolve
+    "在入住後，準備開始探索這個城市。"
     "你計畫先去哪裡呢？"
 
     menu:
@@ -316,6 +312,7 @@ label hotel:
 label rest_at_hotel:
     scene bg_hotel with dissolve
     "你決定在舒適的旅館房間裡放鬆一下，為接下來的行程儲備體力。"
+    scene bg_hotel with dissolve
     "休息完後，是時候出去覓食了。"
     jump to_dinner_story
 
